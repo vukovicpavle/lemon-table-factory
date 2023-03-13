@@ -1,0 +1,38 @@
+{
+  "name": "@vukovicpavle/lemon-table-factory",
+  "version": "1.0.0",
+  "description": "🍋 Table factory is a library for creating tables with React.",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
+    "build:esm:watch": "tsc --watch",
+    "build:cjs:watch": "tsc --module commonjs --outDir lib/cjs --watch",
+    "build:watch": "npm run build:esm:watch & npm run build:cjs:watch",
+    "replace": "cd example && npm uninstall @vukovicpavle/lemon-table-factory && npm install ../ && cd ..",
+    "restart:example": "cd example && npm start",
+    "start": "concurrently \"npm run build:watch\" \"nodemon -w lib -e js,ts,tsx --exec 'npm run replace'\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.9.5"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
